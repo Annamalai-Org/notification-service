@@ -1,0 +1,8 @@
+import Redis from "ioredis";
+
+const redis = new Redis(process.env.REDIS_URL as string);
+
+redis.on("connect",()=>console.log("Redis connected"));
+redis.on("error",(err : Error)=>console.log(`Redis error ${err.message}`));
+
+export default redis;
