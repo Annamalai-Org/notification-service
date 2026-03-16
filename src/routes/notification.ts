@@ -12,6 +12,13 @@ router.post('/notifications/email', async (req: Request, res: Response) => {
         return res.status(400).json({ error: 'Missing required fields: to, subject, message' });
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(to)) {
+        return res.status(400).json({ error: 'Invalid email format' });
+    }
+
     try {
         const job = await emailQueue.add("send-email", { to, subject, message }, {
             attempts: 3,
