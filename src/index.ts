@@ -7,6 +7,7 @@ import { initSocket } from "./socket"
 import notificationRoutes from "./routes/notification"
 import "./workers/emailWorker"  
 import logger from "./utils/logger"
+import cors from "cors";
 
 const app = express()
 const server = createServer(app)
@@ -14,6 +15,8 @@ const server = createServer(app)
 initSocket(server)
 
 app.use(express.json())
+
+app.use(cors());
 app.use(notificationRoutes)
 
 const PORT = process.env.PORT || 3000
