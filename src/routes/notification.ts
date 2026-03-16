@@ -20,7 +20,6 @@ router.post('/notifications/email', async (req: Request, res: Response) => {
                 delay: 1000
             }
         })
-        // const job = await emailQueue.add("send-email", { to, subject, message })
         getIO().emit("notification-status", {
             email: to,
             status: "queued",

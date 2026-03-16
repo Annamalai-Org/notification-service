@@ -9,7 +9,7 @@ const emailWorker = new Worker("emailQueue", async (job: Job) => {
 
 
     try {
-        getIO().emit("notification-status", {  // same event name for all
+        getIO().emit("notification-status", {  
             email: to,
             status: "processing",
             timestamp: new Date().toISOString()

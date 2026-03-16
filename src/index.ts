@@ -5,7 +5,7 @@ import { createServer } from "http"
 
 import { initSocket } from "./socket"
 import notificationRoutes from "./routes/notification"
-import "./workers/emailWorker"  // just importing starts the worker
+import "./workers/emailWorker"  
 import logger from "./utils/logger"
 
 const app = express()
